@@ -11,7 +11,7 @@ namespace RogueLikeRPG
 {
     internal class Player
     {
-        public int X { get; private set; }
+        public int X { get; private set; } // Explore more  about properties
         public int Y { get; private set; }
 
         public Player(int startX, int startY)
@@ -20,7 +20,7 @@ namespace RogueLikeRPG
             Y = startY;
         }
 
-        public void MovePlayer(Map map, char direction)
+        public void MovePlayer(Level level , char direction)
         {
             int NewX = X;
             int NewY = Y;
@@ -34,9 +34,9 @@ namespace RogueLikeRPG
                 default: return; // ignore invalid input
             }
 
-            if (map.IsWalkable(NewX, NewY))
+            if (level.Map.IsWalkable(NewX, NewY))
             {
-                map.UpdatePosition(X, Y, NewX, NewY);
+               level.Map.UpdatePosition(level,X, Y, NewX, NewY);
                 X = NewX;
                 Y = NewY;
             }
